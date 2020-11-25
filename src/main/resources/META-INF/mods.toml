@@ -1,0 +1,25 @@
+modLoader="javafml" 
+loaderVersion="[31,)" 
+[[mods]]
+modId="spaghetti"
+version="${file.jarVersion}" 
+displayName="Spaghetti"
+credits=""
+authors="Frieder Hannenheim"
+description='''
+This mod adds tomatoes, spaghetti and cheese. You can throw spaghetti at your friends and they will have to lick it from their face.
+'''
+
+[[dependencies.examplemod]] 
+    modId="forge"
+    mandatory=true
+    versionRange="[31,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.examplemod]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.15.2]"
+    ordering="NONE"
+    side="BOTH"

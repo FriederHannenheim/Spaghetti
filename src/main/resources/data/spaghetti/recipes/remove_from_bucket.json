@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "spaghetti:cooked_spaghetti_bucket"
+    }
+  ],
+  "result": {
+    "item": "spaghetti:spaghetti"
+  }
+}

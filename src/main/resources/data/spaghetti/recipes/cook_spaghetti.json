@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item" : "spaghetti:spaghetti_bucket"
+  },
+  "result": "spaghetti:cooked_spaghetti_bucket",
+  "experience": 1
+}

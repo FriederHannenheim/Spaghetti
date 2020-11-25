@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "W",
+    "B"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:wheat"
+    },
+    "B": {
+      "item": "minecraft:water_bucket"
+    }
+  },
+  "result": {
+    "item": "spaghetti:spaghetti_bucket"
+  }
+}

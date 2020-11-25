@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "T",
+    "S"
+  ],
+  "key": {
+    "C": {
+      "item": "spaghetti:cheese"
+    },
+    "T": {
+      "item": "spaghetti:tomato"
+    },
+    "S": {
+      "item": "spaghetti:spaghetti"
+    }
+  },
+  "result": {
+    "item": "spaghetti:spaghetti_tomato_sauce"
+  }
+}

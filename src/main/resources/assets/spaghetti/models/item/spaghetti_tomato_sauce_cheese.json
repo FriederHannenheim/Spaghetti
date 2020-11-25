@@ -1,0 +1,8 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "spaghetti:items/spaghetti_cooked",
+    "layer1": "spaghetti:items/spaghetti_sauce",
+    "layer2": "spaghetti:items/spaghetti_cheese"
+  }
+}
