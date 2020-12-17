@@ -29,7 +29,8 @@ public class UncookedSpaghettiItemEntity extends ItemEntity {
     }
     void createTag(){
         CompoundNBT tag = this.getItem().getOrCreateTag();
-        tag.putInt("cook_time",300);
+        if(tag.getInt("cook_time") == 0)
+            tag.putInt("cook_time",300);
         ItemStack newItem = this.getItem().copy();
         newItem.setTag(tag);
         this.setItem(newItem);
