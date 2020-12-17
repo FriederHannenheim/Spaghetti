@@ -1,23 +1,34 @@
 package com.fhannenheim.spaghetti.items;
 
 import com.fhannenheim.spaghetti.entities.UncookedSpaghettiItemEntity;
-import com.fhannenheim.spaghetti.registries.ItemRegistry;
+import com.fhannenheim.spaghetti.registries.EntityRegistry;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-import java.lang.reflect.InvocationTargetException;
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class UncookedSpaghetti extends Item {
 
     public UncookedSpaghetti(Properties properties) {
         super(properties);
+
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        super.addInformation(stack, worldIn, tooltip, flagIn);
+        if (!flagIn.isAdvanced())
+            return;
+        try{
+            tooltip.add(new StringTextComponent("Cook time: " + stack.getTag().getInt("cook_time")).applyTextStyle(TextFormatting.GRAY));
+        } catch (NullPointerException ignored){}
     }
 
     @Override
@@ -27,9 +38,11 @@ public class UncookedSpaghetti extends Item {
 
     @Override
     public Entity createEntity(World world, Entity location, ItemStack itemstack) {
-        ItemEntity itemEntity = new UncookedSpaghettiItemEntity(world, location.getPosX(), location.getPosY(), location.getPosZ(), itemstack);
-        itemEntity.setMotion(location.getMotion());
-        itemEntity.setPickupDelay(40);
-        return itemEntity;
+        UncookedSpaghettiItemEntity entity = new UncookedSpaghettiItemEntity(EntityRegistry.UNCOOKED_SPAGHETTI.get(),
+                world,location.getPosX(),location.getPosY(),location.getPosZ(),itemstack);
+        entity.setPosition(location.getPosX(),location.getPosY(),location.getPosZ());
+        entity.setMotion(location.getMotion());
+        entity.setPickupDelay(40);
+        return entity;
     }
 }

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "contents=milk": {
+      "model": "spaghetti:block/cauldron_milk"
+    },
+    "contents=cheese": {
+      "model": "spaghetti:block/cauldron_cheese"
+    }
+  }
+}

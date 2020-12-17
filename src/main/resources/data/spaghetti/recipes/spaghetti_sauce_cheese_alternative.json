@@ -5,7 +5,10 @@
       "item": "spaghetti:cheese"
     },
     {
-      "item": "spaghetti:spaghetti_tomato_sauce"
+      "item": "spaghetti:tomato"
+    },
+    {
+      "item": "spaghetti:spaghetti"
     }
   ],
   "result": {

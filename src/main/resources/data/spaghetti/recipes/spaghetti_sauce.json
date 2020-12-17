@@ -1,17 +1,13 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "T",
-    "S"
-  ],
-  "key": {
-    "T": {
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
       "item": "spaghetti:tomato"
     },
-    "S": {
+    {
       "item": "spaghetti:spaghetti"
     }
-  },
+  ],
   "result": {
     "item": "spaghetti:spaghetti_tomato_sauce"
   }

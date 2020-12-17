@@ -1,5 +1,6 @@
 modLoader="javafml" 
-loaderVersion="[31,)" 
+loaderVersion="[31,)"
+license="ISC license"
 [[mods]]
 modId="spaghetti"
 version="${file.jarVersion}" 

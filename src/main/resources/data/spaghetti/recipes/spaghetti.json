@@ -1,18 +1,11 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "W",
-    "B"
-  ],
-  "key": {
-    "W": {
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
       "item": "minecraft:wheat"
-    },
-    "B": {
-      "item": "minecraft:water_bucket"
     }
-  },
+  ],
   "result": {
-    "item": "spaghetti:spaghetti_bucket"
+    "item": "spaghetti:uncooked_spaghetti"
   }
 }

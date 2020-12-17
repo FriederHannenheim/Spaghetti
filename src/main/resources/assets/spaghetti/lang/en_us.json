@@ -1,3 +1,11 @@
 {
-  "item.spaghetti.tomato" : "Tomato"
+  "block.spaghetti.tomato" : "Tomato",
+  "block.spaghetti.cauldron" : "Cauldron filled with Milk",
+  "item.spaghetti.spaghetti": "Spaghetti",
+  "item.spaghetti.uncooked_spaghetti": "Uncooked Spaghetti",
+  "item.spaghetti.spaghetti_tomato_sauce": "Spaghetti with Tomato Sauce",
+  "item.spaghetti.spaghetti_tomato_sauce_cheese": "Spaghetti with Tomato Sauce and Cheese",
+  "item.spaghetti.cheese": "Cheese",
+  "entity.player.slurp": "Player eating spaghetti off their face",
+  "entity.spaghetti.splash": "Player getting hit by Spaghetti"
 }

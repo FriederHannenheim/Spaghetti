@@ -1,0 +1,26 @@
+{
+  "entity.player.slurp": {
+    "category": "player",
+    "subtitle": "entity.player.slurp",
+    "sounds": [
+      {
+        "name": "spaghetti:slurp1"
+      },
+      {
+        "name": "spaghetti:slurp2"
+      },
+      {
+        "name": "spaghetti:slurp3"
+      }
+    ]
+  },
+  "entity.spaghetti.splash": {
+    "category": "player",
+    "subtitle": "entity.spaghetti.splash",
+    "sounds": [
+      {
+        "name": "spaghetti:splash"
+      }
+    ]
+  }
+}

@@ -1,6 +1,7 @@
 package com.fhannenheim.spaghetti.registries;
 
 import com.fhannenheim.spaghetti.Spaghetti;
+import com.fhannenheim.spaghetti.entities.SpaghettiEntity;
 import com.fhannenheim.spaghetti.entities.UncookedSpaghettiItemEntity;
 import net.minecraft.entity.EntityClassification;
 import net.minecraft.entity.EntityType;
@@ -14,6 +15,11 @@ public class EntityRegistry {
 
     public static final RegistryObject<EntityType<UncookedSpaghettiItemEntity>> UNCOOKED_SPAGHETTI = ENTITIES.register(
             "uncooked_spaghetti",
-            () -> EntityType.Builder.<UncookedSpaghettiItemEntity>create(UncookedSpaghettiItemEntity::new, EntityClassification.MISC).size(.1f,.1f)
+            () -> EntityType.Builder.<UncookedSpaghettiItemEntity>create(UncookedSpaghettiItemEntity::new, EntityClassification.MISC).size(0.25F, 0.25F)
                     .build(new ResourceLocation(Spaghetti.MOD_ID,"uncooked_spaghetti").toString()));
+    public static final RegistryObject<EntityType<SpaghettiEntity>> SPAGHETTI = ENTITIES.register(
+            "spaghetti",
+            () -> EntityType.Builder.<SpaghettiEntity>create(SpaghettiEntity::new, EntityClassification.MISC).size(0.25F, 0.25F)
+                    .build(new ResourceLocation(Spaghetti.MOD_ID,"spaghetti").toString()));
+
 }
