@@ -117,8 +117,12 @@ public class CustomCauldron extends Block {
         }
 
         @Nonnull
-        @Override
         public String getName() {
+            return name;
+        }
+
+        @Override
+        public String getString() {
             return name;
         }
     }

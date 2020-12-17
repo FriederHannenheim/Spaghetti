@@ -1,5 +1,6 @@
 package com.fhannenheim.spaghetti.entities;
 
+import com.fhannenheim.spaghetti.Spaghetti;
 import com.fhannenheim.spaghetti.registries.ItemRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -29,7 +30,8 @@ public class UncookedSpaghettiItemEntity extends ItemEntity {
     }
     void createTag(){
         CompoundNBT tag = this.getItem().getOrCreateTag();
-        tag.putInt("cook_time",300);
+        if(tag.getInt("cook_time") == 0)
+            tag.putInt("cook_time",300);
         ItemStack newItem = this.getItem().copy();
         newItem.setTag(tag);
         this.setItem(newItem);
@@ -42,10 +44,10 @@ public class UncookedSpaghettiItemEntity extends ItemEntity {
         BlockState inBlock = this.world.getBlockState(this.getPosition());
         if (inBlock.getBlock() == Blocks.CAULDRON) {
             if (inBlock.get(BlockStateProperties.LEVEL_0_3) == 3 &&
-                    this.world.getBlockState(this.getPosition().down()).has(BlockStateProperties.LIT) &&
+                    this.world.getBlockState(this.getPosition().down()).hasProperty(BlockStateProperties.LIT) &&
                     this.world.getBlockState(this.getPosition().down()).get(BlockStateProperties.LIT)) {
-
                 CompoundNBT tag = this.getItem().getOrCreateTag();
+                Spaghetti.LOGGER.info(tag.get("cook_time"));
                 tag.putInt("cook_time", tag.getInt("cook_time") - 1);
                 ItemStack newItem = this.getItem().copy();
                 newItem.setTag(tag);

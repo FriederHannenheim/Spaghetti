@@ -12,7 +12,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ItemRegistry {
-    public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, Spaghetti.MOD_ID);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Spaghetti.MOD_ID);
     public static final RegistryObject<Item> TOMATO = ITEMS.register("tomato",() -> new BlockItem(BlockRegistry.TOMATO_CROP.get(), new Item.Properties().food(new Food.Builder().hunger(3).saturation(2).build()).group(ItemGroup.FOOD)));
     public static final RegistryObject<Item> UNCOOKED_SPAGHETTI = ITEMS.register("uncooked_spaghetti",() -> new UncookedSpaghetti(new Item.Properties().group(ItemGroup.FOOD)));
     public static final RegistryObject<Item> SPAGHETTI = ITEMS.register("spaghetti",() -> new SpaghettiItem(new Item.Properties().group(ItemGroup.FOOD)));

@@ -11,7 +11,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class EntityRegistry {
-    public static final DeferredRegister<EntityType<?>> ENTITIES = new DeferredRegister<>(ForgeRegistries.ENTITIES, Spaghetti.MOD_ID);
+    public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITIES, Spaghetti.MOD_ID);
 
     public static final RegistryObject<EntityType<UncookedSpaghettiItemEntity>> UNCOOKED_SPAGHETTI = ENTITIES.register(
             "uncooked_spaghetti",

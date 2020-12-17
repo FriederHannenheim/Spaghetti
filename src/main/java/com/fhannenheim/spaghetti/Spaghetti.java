@@ -26,9 +26,9 @@ import net.minecraft.dispenser.IPosition;
 import net.minecraft.dispenser.ProjectileDispenseBehavior;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -80,7 +80,8 @@ public class Spaghetti {
             modEventBus.addListener(this::clientSetup);
             inputHandler = new InputHandler();
             MinecraftForge.EVENT_BUS.register(inputHandler);
-        });;
+        });
+        ;
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.addListener(RenderSpaghettiOnFace::renderSpaghettiOverlay);
         MinecraftForge.EVENT_BUS.register(this);
@@ -103,17 +104,16 @@ public class Spaghetti {
         SpaghettiCapability.register();
         eatHandler = new SpaghettiEatHandler();
         MinecraftForge.EVENT_BUS.register(eatHandler);
-        for (Item item:new Item[]{ItemRegistry.SPAGHETTI.get(),ItemRegistry.SPAGHETTI_W_SAUCE.get(),ItemRegistry.SPAGHETTI_W_SAUCE_N_CHEESE.get()}){
+        for (Item item : new Item[]{ItemRegistry.SPAGHETTI.get(), ItemRegistry.SPAGHETTI_W_SAUCE.get(), ItemRegistry.SPAGHETTI_W_SAUCE_N_CHEESE.get()}) {
             DispenserBlock.registerDispenseBehavior(item, new ProjectileDispenseBehavior() {
                 @Override
-                protected IProjectile getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
-                    SpaghettiEntity entity = new SpaghettiEntity(worldIn,position.getX(),position.getY(),position.getZ());
+                protected ProjectileEntity getProjectileEntity(World worldIn, IPosition position, ItemStack stackIn) {
+                    SpaghettiEntity entity = new SpaghettiEntity(worldIn, position.getX(), position.getY(), position.getZ());
                     entity.setItem(new ItemStack(item));
                     return entity;
                 }
             });
         }
-
     }
 
     @SubscribeEvent
@@ -122,34 +122,38 @@ public class Spaghetti {
             event.addCapability(new ResourceLocation(MOD_ID, "spaghetcap"), new SpaghettiCapabilityProvider());
         }
     }
+
     @SubscribeEvent
-    public void addVillagerTrades(VillagerTradesEvent event){
-        if(event.getType() == VillagerProfession.FARMER){
-            event.getTrades().get(1).add(new BasicTrade(new ItemStack(Items.EMERALD),new ItemStack(ItemRegistry.TOMATO.get()),16,3,0));
+    public void addVillagerTrades(VillagerTradesEvent event) {
+        if (event.getType() == VillagerProfession.FARMER) {
+            event.getTrades().get(1).add(new BasicTrade(new ItemStack(Items.EMERALD), new ItemStack(ItemRegistry.TOMATO.get()), 16, 3, 0));
         }
 
     }
+
     @SubscribeEvent
     public void playerJoin(PlayerEvent.PlayerLoggedInEvent event) {
         // Send spaghetti data of the joining player to all players
-        ISpaghettiCapability cap = event.getPlayer().getCapability(SpaghettiCapability.SPAGHETTI_CAPABILITY).orElseThrow(() -> new IllegalStateException(Spaghetti.NO_CAP_ERROR)) ;
-        Networking.INSTANCE.send(PacketDistributor.ALL.noArg(), new SyncSpaghettiWithClient(event.getPlayer().getUniqueID(),(CompoundNBT) SpaghettiCapability.SPAGHETTI_CAPABILITY.getStorage().writeNBT(SpaghettiCapability.SPAGHETTI_CAPABILITY, cap, Direction.DOWN)));
+        ISpaghettiCapability cap = event.getPlayer().getCapability(SpaghettiCapability.SPAGHETTI_CAPABILITY).orElseThrow(() -> new IllegalStateException(Spaghetti.NO_CAP_ERROR));
+        Networking.INSTANCE.send(PacketDistributor.ALL.noArg(), new SyncSpaghettiWithClient(event.getPlayer().getUniqueID(), (CompoundNBT) SpaghettiCapability.SPAGHETTI_CAPABILITY.getStorage().writeNBT(SpaghettiCapability.SPAGHETTI_CAPABILITY, cap, Direction.DOWN)));
     }
+
     @SubscribeEvent
-    public void blockRightClick(PlayerInteractEvent.RightClickBlock event){
+    public void blockRightClick(PlayerInteractEvent.RightClickBlock event) {
         PlayerEntity player = event.getPlayer();
-        if(event.getWorld().getBlockState(event.getPos()).getBlock() == Blocks.CAULDRON){
-            if(player.getHeldItem(event.getHand()).getItem() == Items.MILK_BUCKET){
-                event.getWorld().setBlockState(event.getPos(),BlockRegistry.CAULDRON.get().getDefaultState());
-                player.setHeldItem(event.getHand(),new ItemStack(Items.BUCKET));
+        if (event.getWorld().getBlockState(event.getPos()).getBlock() == Blocks.CAULDRON) {
+            if (player.getHeldItem(event.getHand()).getItem() == Items.MILK_BUCKET) {
+                event.getWorld().setBlockState(event.getPos(), BlockRegistry.CAULDRON.get().getDefaultState());
+                player.setHeldItem(event.getHand(), new ItemStack(Items.BUCKET));
             }
         }
     }
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
+
+    @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
         @SubscribeEvent
         public static void onItemsRegistry(final RegistryEvent.Register<Item> itemRegistryEvent) {
-            itemRegistryEvent.getRegistry().register(new BlockItem(BlockRegistry.CAULDRON.get(),new Item.Properties()).setRegistryName("cauldron"));
+            itemRegistryEvent.getRegistry().register(new BlockItem(BlockRegistry.CAULDRON.get(), new Item.Properties()).setRegistryName("cauldron"));
 
         }
     }

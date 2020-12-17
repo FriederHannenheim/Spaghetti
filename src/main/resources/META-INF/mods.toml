@@ -14,13 +14,13 @@ This mod adds tomatoes, spaghetti and cheese. You can throw spaghetti at your fr
 [[dependencies.examplemod]] 
     modId="forge"
     mandatory=true
-    versionRange="[31,)"
+    versionRange="[33,34,35,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.examplemod]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.15.2]"
+    versionRange="[1.16.2,1.16.3,1.16.4]"
     ordering="NONE"
     side="BOTH"

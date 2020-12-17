@@ -27,7 +27,7 @@ public class UncookedSpaghetti extends Item {
         if (!flagIn.isAdvanced())
             return;
         try{
-            tooltip.add(new StringTextComponent("Cook time: " + stack.getTag().getInt("cook_time")).applyTextStyle(TextFormatting.GRAY));
+            tooltip.add(new StringTextComponent("Cook time: " + stack.getTag().getInt("cook_time")).mergeStyle(TextFormatting.GRAY));
         } catch (NullPointerException ignored){}
     }
 

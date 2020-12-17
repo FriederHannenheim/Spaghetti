@@ -9,6 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.client.settings.PointOfView;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,7 +26,7 @@ public class RenderSpaghettiOnFace {
     @SubscribeEvent
     public static void renderSpaghettiOverlay(TickEvent.RenderTickEvent event) {
         Minecraft mc = Minecraft.getInstance();
-        if (mc.player == null || mc.gameSettings.thirdPersonView != 0 || mc.currentScreen != null)
+        if (mc.player == null || mc.gameSettings.getPointOfView() != PointOfView.FIRST_PERSON || mc.currentScreen != null)
             return;
         ISpaghettiCapability cap = mc.player.getCapability(SpaghettiCapability.SPAGHETTI_CAPABILITY).orElseThrow(() -> new IllegalStateException(Spaghetti.NO_CAP_ERROR));
         if (cap.getType() == SpaghettiType.NoSpaghetti) {

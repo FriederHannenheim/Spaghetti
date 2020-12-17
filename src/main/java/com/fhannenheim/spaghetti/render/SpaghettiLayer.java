@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.IEntityRenderer;
-import net.minecraft.client.renderer.entity.layers.ArmorLayer;
+import net.minecraft.client.renderer.entity.layers.BipedArmorLayer;
 import net.minecraft.client.renderer.entity.model.BipedModel;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.entity.LivingEntity;
@@ -23,7 +23,7 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 @OnlyIn(Dist.CLIENT)
-public class SpaghettiLayer<T extends LivingEntity, M extends BipedModel<T>, A extends BipedModel<T>> extends ArmorLayer<T, M, A> {
+public class SpaghettiLayer<T extends LivingEntity, M extends BipedModel<T>, A extends BipedModel<T>> extends BipedArmorLayer<T, M, A> {
     private static final Dictionary<SpaghettiType,String> textures = new Hashtable<SpaghettiType,String>(){{
         put(SpaghettiType.Spaghetti,"textures/models/spaghetti.png");
         put(SpaghettiType.SpaghettiWSauce,"textures/models/spaghetti_w_sauce.png");
@@ -38,7 +38,7 @@ public class SpaghettiLayer<T extends LivingEntity, M extends BipedModel<T>, A e
     }
 
     private void renderArmorPart(MatrixStack matrixStackIn, IRenderTypeBuffer bufferIn, T entityLivingBaseIn, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, EquipmentSlotType slotIn, int packedLightIn) {
-        A a = this.getModelFromSlot(slotIn);
+        A a = this.func_241736_a_(slotIn);
         ((BipedModel) this.getEntityModel()).setModelAttributes(a);
         a.setLivingAnimations(entityLivingBaseIn, limbSwing, limbSwingAmount, partialTicks);
         this.setModelSlotVisible(a, slotIn);

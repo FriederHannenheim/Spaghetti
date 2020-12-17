@@ -22,7 +22,7 @@ public class SpaghettiItem extends Item {
         if (!worldIn.isRemote) {
             SpaghettiEntity spaghettiEntity = new SpaghettiEntity(worldIn, playerIn);
             spaghettiEntity.setItem(itemstack);
-            spaghettiEntity.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
+            spaghettiEntity.func_234612_a_(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
             worldIn.addEntity(spaghettiEntity);
         }
 
