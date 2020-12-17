@@ -69,10 +69,7 @@ public class Spaghetti {
     public static final String NO_CAP_ERROR = "No capabillity was registered on the player. Only report this if it crashed your world.";
     public static SpaghettiEatHandler eatHandler;
     public static InputHandler inputHandler;
-    /*
-        FIXME: Player loses spaghetti when another player joins the server
-        FIXME: Sometimes shooting another player with spaghetti doesn't put spaghetti on their face 
-     */
+
     public Spaghetti() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         BlockRegistry.BLOCKS.register(modEventBus);
